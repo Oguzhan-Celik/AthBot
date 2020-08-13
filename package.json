@@ -1,0 +1,25 @@
+{
+  "name": "dc-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ATHRO",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "ascii-table": "0.0.9",
+    "canvas": "^2.6.1",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "log-symbols": "^4.0.0",
+    "lyrics-finder": "^21.0.5",
+    "simple-youtube-api": "^5.2.1",
+    "soundcloud-downloader": "^0.1.3",
+    "string-progressbar": "^1.0.1",
+    "ytdl-core": "^3.1.3",
+    "ytdl-core-discord": "^1.2.1"
+  }
+}
