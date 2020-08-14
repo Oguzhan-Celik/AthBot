@@ -42,7 +42,7 @@ module.exports = class extends Command {
 		});
 	}
 
-	async execute(message) {
+	async run(message) {
 		const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
 		const members = message.guild.members.cache;
 		const channels = message.guild.channels.cache;
