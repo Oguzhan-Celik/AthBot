@@ -15,7 +15,7 @@ const verificationLevels = {
 	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
 };
 
-const region = {"brazil": ":flag_br: Brazil",
+const regions = {"brazil": ":flag_br: Brazil",
 		"eu-central": ":flag_eu: Central Europe",
         "singapore": ":flag_sg: Singapore",
         "us-central": ":flag_us: U.S. Central",
