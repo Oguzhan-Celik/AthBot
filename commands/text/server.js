@@ -33,16 +33,11 @@ const regions = {"brazil": ":flag_br: Brazil",
         "southafrica": ":flag_za:  South Africa"
     };
 
-module.exports = class extends Command {
-	constructor(...args) {
-		super(...args, {
-			aliases: ['server', 'guild', 'guildinfo'],
-			description: 'Displays information about the server that said message was run in.',
-			category: 'Information'
-		});
-	}
-
-	async run(message) {
+module.exports = {
+	name: 'server',
+	category: "info",
+	description: 'Display info about this server.',
+	async execute(message) {
 		const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
 		const members = message.guild.members.cache;
 		const channels = message.guild.channels.cache;
@@ -86,5 +81,5 @@ module.exports = class extends Command {
 			.addField(`Roles [${roles.length - 1}]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
 			.setTimestamp();
 		message.channel.send(embed);
-	}
+	},
 };
