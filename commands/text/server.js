@@ -1,3 +1,4 @@
+const Command = require('../../util/Command');
 const { MessageEmbed } = require("discord.js");
 const moment = require('moment');
 
@@ -32,10 +33,15 @@ const regions = {"brazil": ":flag_br: Brazil",
         "southafrica": ":flag_za:  South Africa"
     };
 
-module.exports = {
-	name: 'server',
-	category: "info",
-	description: 'Display info about this server.',
+module.exports = class extends Command {
+	constructor(...args) {
+		super(...args, {
+			aliases: ['server', 'guild', 'guildinfo'],
+			description: 'Displays information about the server that said message was run in.',
+			category: 'Information'
+		});
+	}
+
 	async execute(message) {
 		const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
 		const members = message.guild.members.cache;
