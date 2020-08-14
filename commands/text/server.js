@@ -1,18 +1,21 @@
 const { MessageEmbed } = require("discord.js");
+const moment = require('moment');
 
-module.exports = {
-	name: 'server',
-	category: "info",
-	description: 'Display info about this server.',
-	execute(message) {
+const filterLevels = {
+	DISABLED: 'Off',
+	MEMBERS_WITHOUT_ROLES: 'No Role',
+	ALL_MEMBERS: 'Everyone'
+};
 
-		function checkDays(date) {
-			let now = new Date();
-			let diff = now.getTime() - date.getTime();
-			let days = Math.floor(diff / 86400000);
-			return days + (days == 1 ? " day" : " days") + " ago";
-		};
-		let region = {"brazil": ":flag_br: Brazil",
+const verificationLevels = {
+	NONE: 'None',
+	LOW: 'Low',
+	MEDIUM: 'Medium',
+	HIGH: '(╯°□°）╯︵ ┻━┻',
+	VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
+};
+
+const region = {"brazil": ":flag_br: Brazil",
 		"eu-central": ":flag_eu: Central Europe",
         "singapore": ":flag_sg: Singapore",
         "us-central": ":flag_us: U.S. Central",
@@ -28,25 +31,54 @@ module.exports = {
         "russia": ":flag_ru: Russia",
         "southafrica": ":flag_za:  South Africa"
     };
-	const embed = new MessageEmbed()
 
-	.setColor("RANDOM")
-	.setAuthor(`AthBot in ${message.guild.name}`, message.guild.iconURL())
-	.setTitle("Info and help")
-		.addField("Prefix:", `\`${message.client.prefix}\``, true)
-		.addField("Commands help:", `\`${message.client.prefix}help (h)\``, true)
-		.addField("Server ID:", message.guild.id, true)
-		.addField("Member Count:", message.guild.memberCount, true)
-		.addField("Bot Count:", message.guild.members.cache.filter(member => member.user.bot).size, true)
-		.addField("Online member:", `${message.guild.memberCount}/${message.guild.members.cache.filter(member => member.presence.status === 'online').size}`, true)
-		.addField("Server name:", message.guild.name, true)
-		.addField("Server owner:", `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`, true)
-		.addField("Server region:", region[message.guild.region], true)
-		.addField("Server Creation Date:", `${message.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(message.channel.guild.createdAt)})`)
-		
+module.exports = {
+	name: 'server',
+	category: "info",
+	description: 'Display info about this server.',
+	execute(message) {
+		const roles = message.guild.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString());
+		const members = message.guild.members.cache;
+		const channels = message.guild.channels.cache;
+		const emojis = message.guild.emojis.cache;
 
-    message.channel.send({embed});
-
-
+		const embed = new MessageEmbed()
+			.setDescription(`**Guild information for __${message.guild.name}__**`)
+			.setColor('RANDOM')
+			.setThumbnail(message.guild.iconURL({ dynamic: true }))
+			.addField('General', [
+				`**❯ Name:** ${message.guild.name}`,
+				`**❯ ID:** ${message.guild.id}`,
+				`**❯ Owner:** ${message.guild.owner.user.tag} (${message.guild.ownerID})`,
+				`**❯ Region:** ${regions[message.guild.region]}`,
+				`**❯ Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}`,
+				`**❯ Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}`,
+				`**❯ Verification Level:** ${verificationLevels[message.guild.verificationLevel]}`,
+				`**❯ Time Created:** ${moment(message.guild.createdTimestamp).format('LT')} ${moment(message.guild.createdTimestamp).format('LL')} ${moment(message.guild.createdTimestamp).fromNow()}`,
+				'\u200b'
+			])
+			.addField('Statistics', [
+				`**❯ Role Count:** ${roles.length}`,
+				`**❯ Emoji Count:** ${emojis.size}`,
+				`**❯ Regular Emoji Count:** ${emojis.filter(emoji => !emoji.animated).size}`,
+				`**❯ Animated Emoji Count:** ${emojis.filter(emoji => emoji.animated).size}`,
+				`**❯ Member Count:** ${message.guild.memberCount}`,
+				`**❯ Humans:** ${members.filter(member => !member.user.bot).size}`,
+				`**❯ Bots:** ${members.filter(member => member.user.bot).size}`,
+				`**❯ Text Channels:** ${channels.filter(channel => channel.type === 'text').size}`,
+				`**❯ Voice Channels:** ${channels.filter(channel => channel.type === 'voice').size}`,
+				`**❯ Boost Count:** ${message.guild.premiumSubscriptionCount || '0'}`,
+				'\u200b'
+			])
+			.addField('Presence', [
+				`**❯ Online:** ${members.filter(member => member.presence.status === 'online').size}`,
+				`**❯ Idle:** ${members.filter(member => member.presence.status === 'idle').size}`,
+				`**❯ Do Not Disturb:** ${members.filter(member => member.presence.status === 'dnd').size}`,
+				`**❯ Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
+				'\u200b'
+			])
+			.addField(`Roles [${roles.length - 1}]`, roles.length < 10 ? roles.join(', ') : roles.length > 10 ? this.client.utils.trimArray(roles) : 'None')
+			.setTimestamp();
+		message.channel.send(embed);
 	},
 };

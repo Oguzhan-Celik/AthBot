@@ -3,7 +3,7 @@ const Canvas = require("canvas");
 
 module.exports = {
 	name: 'uinfo',
-    description: 'Display info about user',
+    description: 'Display info about user with image',
     aliases: ["usi"],
 	category: "text",
 	async execute(message, client, args) {
