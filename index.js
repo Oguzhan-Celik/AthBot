@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const { prefix } = require('./config.json');
-const Util = require('./util/util.js');
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -12,7 +11,6 @@ client.prefix = prefix;
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands/");
 client.queue = new Map();
-this.utils = new Util(this);
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
