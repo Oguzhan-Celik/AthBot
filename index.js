@@ -23,7 +23,7 @@ client.on("ready", () => {
     console.log(`I am now online, my name is ${client.user.username}`);
 
     client.user.setActivity("Selam olum he '.help'",
-    {type:"STREAMING"});
+    {type:"CUSTOM_STATUS"});
 
 });
 client.on("warn", (info) => console.log(info));
