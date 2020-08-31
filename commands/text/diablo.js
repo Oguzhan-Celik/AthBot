@@ -12,8 +12,7 @@ module.exports = {
 		}
 
 		voiceChannel.join().then(connection => {
-			const stream = ytdl('https://www.youtube.com/watch?v=KS1oIN6Fq4w', { filter: 'audioonly' });
-			const dispatcher = connection.play(stream);
+			const dispatcher = connection.play('https://www.youtube.com/watch?v=KS1oIN6Fq4w', { filter: 'audioonly' });
 
 			dispatcher.on('finish', () => voiceChannel.leave());
         });
