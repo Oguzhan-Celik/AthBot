@@ -9,7 +9,7 @@ client.login(process.env.token);
 client.commands = new Collection();
 client.prefix = prefix;
 client.aliases = new Collection();
-client.owners = options.owners;
+client.owners = owners;
 client.categories = fs.readdirSync("./commands/");
 client.queue = new Map();
 const cooldowns = new Collection();
