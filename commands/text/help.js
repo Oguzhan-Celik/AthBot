@@ -15,11 +15,13 @@ module.exports = {
         "**Music**",
         commands
           .filter((cmd) => cmd.category == "Music")
-          .forEach((cmd) => {
-            `${message.client.prefix}${cmd.name} ${
-              cmd.aliases ? `(${cmd.aliases})` : ""
-            }`;
-          })
+          .map(
+            (cmd) =>
+              `${message.client.prefix}${cmd.name} ${
+                cmd.aliases ? `(${cmd.aliases})` : ""
+              }`
+          )
+          .join(" ")
       );
 
     helpEmbed.setTimestamp();
