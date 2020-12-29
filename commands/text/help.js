@@ -15,12 +15,12 @@ module.exports = {
         commands
           .filter((cmd) => cmd.category == "Music")
           .forEach((cmd) => {
-            helpEmbed.addField(
+            
               `\`${message.client.prefix}${cmd.name} ${
                 cmd.aliases ? `(${cmd.aliases})` : ""
               }\``,
-              true
-            );
+              
+            
           }),
       ])
 
@@ -28,12 +28,11 @@ module.exports = {
         commands
           .filter((cmd) => cmd.category == "Text")
           .forEach((cmd) => {
-            helpEmbed.addField(
+            
               `\`${message.client.prefix}${cmd.name} ${
                 cmd.aliases ? `(${cmd.aliases})` : ""
               }\``,
-              true
-            );
+              
           }),
       ]);
 
