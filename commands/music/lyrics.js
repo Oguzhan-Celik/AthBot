@@ -4,10 +4,14 @@ const lyricsFinder = require("lyrics-finder");
 module.exports = {
   name: "lyrics",
   aliases: ["ly"],
+  category: "Music",
   description: "Get lyrics for the currently playing song",
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is nothing playing.").catch(console.error);
+    if (!queue)
+      return message.channel
+        .send("There is nothing playing.")
+        .catch(console.error);
 
     let lyrics = null;
 
@@ -27,5 +31,5 @@ module.exports = {
     if (lyricsEmbed.description.length >= 2048)
       lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
     return message.channel.send(lyricsEmbed).catch(console.error);
-  }
+  },
 };
