@@ -48,17 +48,7 @@ module.exports = {
         `The bot's prefix is: ${message.client.prefix}`,
         `Command Parameters: \`<>\` is strict & \`[]\` is optional`,
       ]);
-      let categories;
 
-      for (const category of categories) {
-        embed.addField(
-          `**${this.client.utils.capitalise(category)}**`,
-          this.client.commands
-            .filter((cmd) => cmd.category === category)
-            .map((cmd) => `\`${cmd.name}\``)
-            .join(" ")
-        );
-      }
       return message.channel.send(embed);
     }
   },
