@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
-const { prefix, owners } = require("./config.json");
+const { prefix } = require("./config.json");
 const Util = require("./util/AthbotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
