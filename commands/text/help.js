@@ -17,9 +17,21 @@ module.exports = {
           .filter((cmd) => cmd.category == "Music")
           .map(
             (cmd) =>
-              `${message.client.prefix}${cmd.name} ${
+              `\`${message.client.prefix}${cmd.name} ${
                 cmd.aliases ? `(${cmd.aliases})` : ""
-              }`
+              }\``
+          )
+          .join(" ")
+      )
+      .addField(
+        "**Text**",
+        commands
+          .filter((cmd) => cmd.category == "Text")
+          .map(
+            (cmd) =>
+              `\`${message.client.prefix}${cmd.name} ${
+                cmd.aliases ? `(${cmd.aliases})` : ""
+              }\``
           )
           .join(" ")
       );
