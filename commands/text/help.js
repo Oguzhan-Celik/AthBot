@@ -19,7 +19,7 @@ module.exports = {
       )
       .setColor("ORANGE");
 
-    if (args[0] === cmd) {
+    if (args[0] === cmd.name || cmd.aliases) {
       helpEmbed.setAuthor(
         `${this.client.utils.capitalise(cmd.name)} Command Help`,
         "https://i.imgur.com/HtCrD3H.jpg?1"
