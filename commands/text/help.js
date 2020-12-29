@@ -49,7 +49,6 @@ module.exports = {
         `Command Parameters: \`<>\` is strict & \`[]\` is optional`,
       ]);
       let categories;
-      categories = this.client.commands.map((cmd) => cmd.category);
 
       for (const category of categories) {
         embed.addField(
