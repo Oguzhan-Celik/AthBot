@@ -34,7 +34,9 @@ module.exports = {
         "https://i.imgur.com/HtCrD3H.jpg?1"
       );
       helpEmbed.setDescription([
-        `**❯ Aliases:** ${command.aliases ? `(${command.aliases})` : ""}`,
+        `**❯ Aliases:** ${
+          command.aliases ? `(${command.aliases})` : "No Aliases"
+        }`,
         `**❯ Description:** ${command.description}`,
         `**❯ Category:** ${command.category}`,
         `**❯ Usage:** ${message.client.prefix}${command.name}`,
@@ -50,8 +52,7 @@ module.exports = {
           commands
             .filter((cmd) => cmd.category == "Music")
             .map(
-              (cmd) =>
-                `\`${cmd.name}${cmd.aliases ? `( ${cmd.aliases})` : ""}\``
+              (cmd) => `\`${cmd.name}${cmd.aliases ? `(${cmd.aliases})` : ""}\``
             )
             .join(" ")
         )
@@ -60,8 +61,7 @@ module.exports = {
           commands
             .filter((cmd) => cmd.category == "Text")
             .map(
-              (cmd) =>
-                `\`${cmd.name}${cmd.aliases ? `( ${cmd.aliases})` : ""}\``
+              (cmd) => `\`${cmd.name}${cmd.aliases ? `(${cmd.aliases})` : ""}\``
             )
             .join(" ")
         );
