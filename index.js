@@ -3,7 +3,7 @@ const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const { prefix } = require("./config.json");
 
-const client = new Discord.Client({ disableMentions: "everyone" });
+const client = new Client({ disableMentions: "everyone" });
 
 client.login(process.env.token);
 client.commands = new Collection();
