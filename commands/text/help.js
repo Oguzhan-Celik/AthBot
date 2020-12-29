@@ -8,9 +8,16 @@ module.exports = {
     let commands = message.client.commands.array();
 
     let helpEmbed = new MessageEmbed()
-      .setTitle("AthBot Help Menu")
-      .setDescription("These are the available commands for AthBot")
-      .setColor("RANDOM")
+      .setAuthor(
+        `${message.guild.name} Help Menu`,
+        message.guild.iconURL({ dynamic: true })
+      )
+      .setThumbnail(this.client.user.displayAvatarURL())
+      .setFooter(
+        `Requested by ${message.author.username}`,
+        message.author.displayAvatarURL({ dynamic: true })
+      )
+      .setColor("ORANGE")
       .addField(
         "**Music**",
         commands
