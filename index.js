@@ -2,6 +2,7 @@ require("dotenv").config();
 const { Client, Collection } = require("discord.js");
 const fs = require("fs");
 const { prefix, owners } = require("./config.json");
+const Util = require("./util/AthbotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -9,7 +10,7 @@ client.login(process.env.token);
 client.commands = new Collection();
 client.prefix = prefix;
 client.aliases = new Collection();
-client.owners = owners;
+client.utils = new Util(this);
 client.categories = fs.readdirSync("./commands/");
 client.queue = new Map();
 const cooldowns = new Collection();
