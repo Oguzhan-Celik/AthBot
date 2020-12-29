@@ -16,9 +16,9 @@ module.exports = {
       .filter((cmd) => cmd.category == "Music")
       .forEach((cmd) => {
         helpEmbed.addField(
-          `\`${message.client.prefix}${cmd.name} ${
+          `${message.client.prefix}${cmd.name} ${
             cmd.aliases ? `(${cmd.aliases})` : ""
-          }\``,
+          }`,
           true
         );
       });
