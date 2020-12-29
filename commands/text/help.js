@@ -34,7 +34,7 @@ module.exports = {
         "https://i.imgur.com/HtCrD3H.jpg?1"
       );
       helpEmbed.setDescription(
-        commands((cmd) => [
+        commands.map((cmd) => [
           `**❯ Aliases:** ${cmd.aliases ? `(${cmd.aliases})` : ""}`,
           `**❯ Description:** ${cmd.description}`,
           `**❯ Category:** ${cmd.category}`,
