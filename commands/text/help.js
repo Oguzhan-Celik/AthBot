@@ -11,31 +11,31 @@ module.exports = {
       .setTitle("AthBot Help Menu")
       .setDescription("These are the available commands for AthBot")
       .setColor("RANDOM")
-      .addField("**Music**");
+      .addField("**Music**", [
+        commands
+          .filter((cmd) => cmd.category == "Music")
+          .forEach((cmd) => {
+            helpEmbed.addField(
+              `\`${message.client.prefix}${cmd.name} ${
+                cmd.aliases ? `(${cmd.aliases})` : ""
+              }\``,
+              true
+            );
+          }),
+      ])
 
-    commands
-      .filter((cmd) => cmd.category == "Music")
-      .forEach((cmd) => {
-        helpEmbed.addField(
-          `\`${message.client.prefix}${cmd.name} ${
-            cmd.aliases ? `(${cmd.aliases})` : ""
-          }\``,
-          true
-        );
-      })
-
-      .addField("**Text**");
-
-    commands
-      .filter((cmd) => cmd.category == "Text")
-      .forEach((cmd) => {
-        helpEmbed.addField(
-          `\`${message.client.prefix}${cmd.name} ${
-            cmd.aliases ? `(${cmd.aliases})` : ""
-          }\``,
-          true
-        );
-      });
+      .addField("**Text**", [
+        commands
+          .filter((cmd) => cmd.category == "Text")
+          .forEach((cmd) => {
+            helpEmbed.addField(
+              `\`${message.client.prefix}${cmd.name} ${
+                cmd.aliases ? `(${cmd.aliases})` : ""
+              }\``,
+              true
+            );
+          }),
+      ]);
 
     helpEmbed.setTimestamp();
 
