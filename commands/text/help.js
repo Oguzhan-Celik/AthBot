@@ -21,18 +21,6 @@ module.exports = {
           }\``,
           true
         );
-      })
-
-      .addField("**Text**");
-    commands
-      .filter((cmd) => cmd.category == "Text")
-      .forEach((cmd) => {
-        helpEmbed.addField(
-          `\`${message.client.prefix}${cmd.name} ${
-            cmd.aliases ? `(${cmd.aliases})` : ""
-          }\``,
-          true
-        );
       });
 
     helpEmbed.setTimestamp();
