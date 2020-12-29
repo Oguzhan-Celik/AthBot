@@ -4,7 +4,7 @@ module.exports = {
   name: "help",
   aliases: ["h"],
   description: "Display all commands and descriptions",
-  execute(message) {
+  execute(message, args) {
     let commands = message.client.commands.array();
 
     let helpEmbed = new MessageEmbed()
