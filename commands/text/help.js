@@ -33,13 +33,11 @@ module.exports = {
         `${args} Command Help`,
         "https://i.imgur.com/HtCrD3H.jpg?1"
       );
-      helpEmbed.setDescription(
-        commands.map((cmd) => [
-          `**❯ Aliases:** ${cmd.aliases ? `(${cmd.aliases})` : ""}`,
-          `**❯ Description:** ${cmd.description}`,
-          `**❯ Category:** ${cmd.category}`,
-        ])
-      );
+      helpEmbed.setDescription((cmd) => [
+        `**❯ Aliases:** ${cmd.aliases ? `(${cmd.aliases})` : ""}`,
+        `**❯ Description:** ${cmd.description}`,
+        `**❯ Category:** ${cmd.category}`,
+      ]);
     } else {
       helpEmbed
         .addField(
