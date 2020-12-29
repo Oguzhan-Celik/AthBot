@@ -20,9 +20,7 @@ module.exports = {
       .setColor("ORANGE");
 
     if (args[0]) {
-      const cmd =
-        this.client.commands.get(args) ||
-        this.client.commands.get(this.client.aliases.get(args));
+      const cmd = commands.get(args) || commands.get(aliases.get(args));
 
       if (!cmd) return message.channel.send(`Invalid Command named.`);
 
