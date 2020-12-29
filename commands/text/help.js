@@ -8,18 +8,31 @@ module.exports = {
     let commands = message.client.commands.array();
 
     let helpEmbed = new MessageEmbed()
-      .setTitle("Athbot Help")
-      .setDescription("List of all commands")
-      .setColor("RANDOM");
+      .setTitle("AthBot Help Menu")
+      .setDescription("These are the available commands for AthBot")
+      .setColor("RANDOM")
+      .addField("**Music**");
 
     commands
       .filter((cmd) => cmd.category == "Music")
       .forEach((cmd) => {
         helpEmbed.addField(
-          `**${message.client.prefix}${cmd.name} ${
+          `\`${message.client.prefix}${cmd.name} ${
             cmd.aliases ? `(${cmd.aliases})` : ""
-          }**`,
-          `${cmd.description}`,
+          }\``,
+          true
+        );
+      })
+
+      .addField("**Text**");
+
+    commands
+      .filter((cmd) => cmd.category == "Text")
+      .forEach((cmd) => {
+        helpEmbed.addField(
+          `\`${message.client.prefix}${cmd.name} ${
+            cmd.aliases ? `(${cmd.aliases})` : ""
+          }\``,
           true
         );
       });
