@@ -1,4 +1,4 @@
-module.exports = class Util {
+module.exports = {
   canModifyQueue(member) {
     const { channel } = member.voice;
     const botChannel = member.guild.me.voice.channel;
@@ -11,16 +11,5 @@ module.exports = class Util {
     }
 
     return true;
-  }
-
-  removeDuplicates(arr) {
-    return [...new Set(arr)];
-  }
-
-  capitalise(string) {
-    return string
-      .split(" ")
-      .map((str) => str.slice(0, 1).toUpperCase() + str.slice(1))
-      .join(" ");
-  }
+  },
 };

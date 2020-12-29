@@ -3,53 +3,29 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "help",
   aliases: ["h"],
-  category: "Text",
   description: "Display all commands and descriptions",
-  async execute(message, [command]) {
-    const embed = new MessageEmbed()
-      .setColor("RANDOM")
-      .setAuthor(
-        `${message.guild.name} Help Menu`,
-        message.guild.iconURL({ dynamic: true })
-      )
-      .setFooter(
-        `Requested by ${message.author.username}`,
-        message.author.displayAvatarURL({ dynamic: true })
-      )
-      .setTimestamp();
+  execute(message) {
+    let commands = message.client.commands.array();
 
-    if (command) {
-      const cmd =
-        this.client.commands.get(command) ||
-        this.client.commands.get(this.client.aliases.get(command));
+    let helpEmbed = new MessageEmbed()
+      .setTitle("Athbot Help")
+      .setDescription("List of all commands")
+      .setColor("RANDOM");
 
-      if (!cmd)
-        return message.channel.send(`Invalid Command named. \`${command}\``);
+    commands
+      .filter((cmd) => cmd.category == "Music")
+      .forEach((cmd) => {
+        helpEmbed.addField(
+          `**${message.client.prefix}${cmd.name} ${
+            cmd.aliases ? `(${cmd.aliases})` : ""
+          }**`,
+          `${cmd.description}`,
+          true
+        );
+      });
 
-      embed.setAuthor(
-        `${this.client.utils.capitalise(cmd.name)} Command Help`,
-        this.client.user.displayAvatarURL()
-      );
-      embed.setDescription([
-        `**❯ Aliases:** ${
-          cmd.aliases.length
-            ? cmd.aliases.map((alias) => `\`${alias}\``).join(" ")
-            : "No Aliases"
-        }`,
-        `**❯ Description:** ${cmd.description}`,
-        `**❯ Category:** ${cmd.category}`,
-        `**❯ Usage:** ${cmd.usage}`,
-      ]);
+    helpEmbed.setTimestamp();
 
-      return message.channel.send(embed);
-    } else {
-      embed.setDescription([
-        `These are the available commands for ${message.guild.name}`,
-        `The bot's prefix is: ${message.client.prefix}`,
-        `Command Parameters: \`<>\` is strict & \`[]\` is optional`,
-      ]);
-
-      return message.channel.send(embed);
-    }
+    return message.channel.send(helpEmbed).catch(console.error);
   },
 };
