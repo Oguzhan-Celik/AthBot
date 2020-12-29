@@ -30,7 +30,7 @@ module.exports = {
       if (!command) return message.channel.send(`Invalid Command named.`);
 
       helpEmbed.setAuthor(
-        `${message.client.commands.capitalise(cmd.name)} Command Help`,
+        `${args} Command Help`,
         "https://i.imgur.com/HtCrD3H.jpg?1"
       );
       helpEmbed.setDescription([
