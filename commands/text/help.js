@@ -37,9 +37,13 @@ module.exports = {
         `**❯ Aliases:** ${command.aliases ? `(${command.aliases})` : ""}`,
         `**❯ Description:** ${command.description}`,
         `**❯ Category:** ${command.category}`,
-        `**❯ Usage:** ${command.usage}`,
+        `**❯ Usage:** ${message.client.prefix}${command.name}`,
       ]);
     } else {
+      helpEmbed.setDescription([
+        `These are the available commands for ${message.guild.name}`,
+        `The bot's prefix is: \`${message.client.prefix}\``,
+      ]);
       helpEmbed
         .addField(
           "**Music**",
@@ -47,9 +51,7 @@ module.exports = {
             .filter((cmd) => cmd.category == "Music")
             .map(
               (cmd) =>
-                `\`${message.client.prefix}${cmd.name} ${
-                  cmd.aliases ? `(${cmd.aliases})` : ""
-                }\``
+                `\`${cmd.name}${cmd.aliases ? `( ${cmd.aliases})` : ""}\``
             )
             .join(" ")
         )
@@ -59,7 +61,7 @@ module.exports = {
             .filter((cmd) => cmd.category == "Text")
             .map(
               (cmd) =>
-                `\`${cmd.name} ${cmd.aliases ? `(${cmd.aliases})` : ""}\``
+                `\`${cmd.name}${cmd.aliases ? `( ${cmd.aliases})` : ""}\``
             )
             .join(" ")
         );
