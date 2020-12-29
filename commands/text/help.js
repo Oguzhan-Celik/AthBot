@@ -20,7 +20,8 @@ module.exports = {
       .setColor("ORANGE");
 
     if (args[0]) {
-      if (args[0] != cmd) return message.channel.send(`Invalid Command named.`);
+      if (args[0] != cmd.name)
+        return message.channel.send(`Invalid Command named.`);
 
       helpEmbed.setAuthor(
         `${this.client.utils.capitalise(cmd.name)} Command Help`,
