@@ -35,7 +35,7 @@ module.exports = {
       );
       helpEmbed.setDescription([
         `**❯ Aliases:** ${
-          cmd.aliases.length
+          message.cmd.aliases.length
             ? cmd.aliases.map((alias) => `\`${alias}\``).join(" ")
             : "No Aliases"
         }`,
