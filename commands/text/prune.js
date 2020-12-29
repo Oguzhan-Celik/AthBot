@@ -1,6 +1,6 @@
 module.exports = {
   name: "prune",
-  category: "Owner",
+  category: "Text",
   description: "Prune up to 99 messages.",
   execute(message, args) {
     const amount = parseInt(args[0]) + 1;
