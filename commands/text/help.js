@@ -30,13 +30,14 @@ module.exports = {
       if (!command) return message.channel.send(`Invalid Command named.`);
 
       helpEmbed.setAuthor(
-        `${args} Command Help`,
+        `${command.name} Command Help`,
         "https://i.imgur.com/HtCrD3H.jpg?1"
       );
       helpEmbed.setDescription([
         `**❯ Aliases:** ${command.aliases ? `(${command.aliases})` : ""}`,
         `**❯ Description:** ${command.description}`,
         `**❯ Category:** ${command.category}`,
+        `**❯ Usage:** ${command.usage}`,
       ]);
     } else {
       helpEmbed
@@ -58,9 +59,7 @@ module.exports = {
             .filter((cmd) => cmd.category == "Text")
             .map(
               (cmd) =>
-                `\`${message.client.prefix}${cmd.name} ${
-                  cmd.aliases ? `(${cmd.aliases})` : ""
-                }\``
+                `\`${cmd.name} ${cmd.aliases ? `(${cmd.aliases})` : ""}\``
             )
             .join(" ")
         );
