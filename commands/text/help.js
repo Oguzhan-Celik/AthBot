@@ -34,9 +34,11 @@ module.exports = {
         "https://i.imgur.com/HtCrD3H.jpg?1"
       );
       helpEmbed.setDescription([
-        `**❯ Aliases:** ${cmd.aliases ? `(${cmd.aliases})` : ""}`,
-        `**❯ Description:** ${cmd.description}`,
-        `**❯ Category:** ${cmd.category}`,
+        `**❯ Aliases:** ${
+          message.cmd.aliases ? `(${message.cmd.aliases})` : ""
+        }`,
+        `**❯ Description:** ${message.cmd.description}`,
+        `**❯ Category:** ${message.cmd.category}`,
       ]);
     } else {
       helpEmbed
