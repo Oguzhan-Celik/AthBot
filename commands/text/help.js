@@ -45,7 +45,7 @@ module.exports = {
     } else {
       embed.setDescription([
         `These are the available commands for ${message.guild.name}`,
-        `The bot's prefix is: ${this.client.prefix}`,
+        `The bot's prefix is: ${message.client.prefix}`,
         `Command Parameters: \`<>\` is strict & \`[]\` is optional`,
       ]);
       let categories;
