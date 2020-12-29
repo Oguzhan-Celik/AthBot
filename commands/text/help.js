@@ -12,7 +12,7 @@ module.exports = {
         `${message.guild.name} Help Menu`,
         message.guild.iconURL({ dynamic: true })
       )
-      .setThumbnail(user.avatarURL())
+      .setThumbnail(message.member.displayAvatarURL())
       .setFooter(
         `Requested by ${message.author.username}`,
         message.author.displayAvatarURL({ dynamic: true })
