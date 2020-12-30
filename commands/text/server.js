@@ -95,7 +95,7 @@ module.exports = {
       ])
       .addField("Presence", [
         `**❯ Online:** ${
-          members.filter((member) => member.presence.status === "online").size
+          members.filter((m) => m.presence.status === "online").size
         }`,
         `**❯ Idle:** ${
           members.filter((member) => member.presence.status === "idle").size
