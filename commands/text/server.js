@@ -82,8 +82,8 @@ module.exports = {
           emojis.filter((emoji) => emoji.animated).size
         }`,
         `**❯ Member Count:** ${message.guild.memberCount}`,
-        `**❯ Humans:** ${members.filter((member) => !member.user.bot).size}`,
-        `**❯ Bots:** ${members.filter((member) => member.user.bot).size}`,
+        `**❯ Humans:** ${members.filter(member => !member.user.bot).size}`,
+        `**❯ Bots:** ${members.filter(member => member.user.bot).size}`,
         `**❯ Text Channels:** ${
           channels.filter((channel) => channel.type === "text").size
         }`,
@@ -95,16 +95,16 @@ module.exports = {
       ])
       .addField("Presence", [
         `**❯ Online:** ${
-          members.filter((m) => m.presence.status === "online").size
+          members.filter(member => member.presence.status === "online").size
         }`,
         `**❯ Idle:** ${
-          members.filter((member) => member.presence.status === "idle").size
+          members.filter(member => member.presence.status === "idle").size
         }`,
         `**❯ Do Not Disturb:** ${
-          members.filter((member) => member.presence.status === "dnd").size
+          members.filter(member => member.presence.status === "dnd").size
         }`,
         `**❯ Offline:** ${
-          members.filter((member) => member.presence.status === "offline").size
+          members.filter(member => member.presence.status === "offline").size
         }`,
         "\u200b",
       ])
