@@ -2,9 +2,9 @@ const Discord = require("discord.js");
 const Canvas = require("canvas");
 
 module.exports = {
-  name: "uinfo",
+  name: "infoimg",
   description: "Display info about user with image",
-  aliases: ["usi"],
+  aliases: ["uimg"],
   category: "Text",
   async execute(message, client, args) {
     if (!args < 1) {

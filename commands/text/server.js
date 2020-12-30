@@ -36,7 +36,6 @@ const regions = {
 module.exports = {
   name: "server",
   category: "Text",
-  category: "info",
   description: "Display info about this server.",
   async execute(message) {
     const roles = message.guild.roles.cache
