@@ -2,7 +2,6 @@ module.exports = {
   name: "ping",
   category: "Text",
   description: "Pong!",
-  category: "info",
   cooldown: 5,
   async execute(message, client) {
     const msg = await message.channel.send(`🏓 Pinging.........`);
