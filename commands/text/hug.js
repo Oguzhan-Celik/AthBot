@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 
 module.exports = {
-  slash: 'both',
   name: 'hug',
   description: 'share your love my friend;)',
   category: 'Text',
