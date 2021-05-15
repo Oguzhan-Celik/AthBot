@@ -20,7 +20,7 @@ module.exports = {
     const ctx = canvas.getContext('2d')
 
     const avatar = await Canvas.loadImage(
-      user.displayAvatarURL({ format: 'jpg' })
+      user.displayAvatarURL({ format: 'gif' })
     )
     ctx.drawImage(avatar, 5, 160, 150, 150)
     ctx.beginPath()
@@ -38,7 +38,7 @@ module.exports = {
     )
     ctx.drawImage(background2, 0, 0, canvas.width, canvas.height)
 
-    const final = new Discord.MessageAttachment(canvas.toBuffer(), 'pet.png')
+    const final = new Discord.MessageAttachment(canvas.toBuffer(), 'pet.gif')
 
     return message.channel.send(final)
   },
