@@ -15,14 +15,20 @@ module.exports = {
     const embed = new MessageEmbed()
     embed.setColor('#FF283F')
 
+    embed.setDescription(`**Guild information for __${message.guild.name}__**`)
+
     if (message.mentions.users.size > 0 && !args[1]) {
       let user = message.mentions.users.first()
       embed.setTitle(`${message.author.username} love ${user.username}!`)
     } else if (message.mentions.users.size > 0 && args[1]) {
       let user = message.mentions.users.first()
       embed.setTitle(`${user.username} love ${args[1]}`)
-    } else if (args[1]) {
-      embed.setTitle(`${message.author.username} love ${args[1]}`)
+    } else if (message.mentions.users.size > 1) {
+      let user = message.mentions.users.first()
+      let user2 = message.mentions.users.second()
+      embed.setTitle(`${user.username} love ${user2.username}`)
+    } else if (args[0]) {
+      embed.setTitle(`${message.author.username} love ${args[0]}`)
     } else {
       embed.setTitle(`${message.author.username} love himself`)
     }
