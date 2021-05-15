@@ -19,7 +19,7 @@ module.exports = {
       let user = message.mentions.users.first()
       embed.setTitle(`${message.author.username} love ${user.username}!`)
     } else {
-      embed.setTitle(`${user} love`)
+      embed.setTitle(`${message.author.username} love ${args[1]}`)
     }
 
     embed.addField(loveLevel)
