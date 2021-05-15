@@ -31,7 +31,7 @@ module.exports = {
       embed.setTitle(`${message.author.username} love himself`)
     }
 
-    embed.addField(`${loveLevel}x`)
+    embed.addField(`${loveLevel}`, '\u200b')
     embed.setTimestamp()
     message.channel.send(embed)
   },
