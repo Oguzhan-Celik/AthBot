@@ -95,19 +95,16 @@ module.exports = {
       ])
       .addField('Presence', [
         `**❯ Online:** ${
-          members.filter((member) => member.user.presence.status === 'online')
-            .size
+          members.filter((user) => user.presence.status === 'online').size
         }`,
         `**❯ Idle:** ${
-          members.filter((member) => member.user.presence.status === 'idle')
-            .size
+          members.filter((user) => user.presence.status === 'idle').size
         }`,
         `**❯ Do Not Disturb:** ${
-          members.filter((member) => member.user.presence.status === 'dnd').size
+          members.filter((user) => user.presence.status === 'dnd').size
         }`,
         `**❯ Offline:** ${
-          members.filter((member) => member.user.presence.status === 'offline')
-            .size
+          members.filter((user) => user.presence.status === 'offline').size
         }`,
         '\u200b',
       ])
