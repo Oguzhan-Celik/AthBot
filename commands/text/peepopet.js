@@ -22,7 +22,7 @@ module.exports = {
       embed.setTitle(`${user} love`)
     }
 
-    embed.setTitle(loveLevel)
+    embed.addField(loveLevel)
 
     message.channel.send(embed)
   },
