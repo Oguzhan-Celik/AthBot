@@ -26,6 +26,9 @@ module.exports = {
       'https://cdn.hovia.com/app/uploads/Green-Tropical-Plant-Wallpaper-Mural-Plain-820x532.jpg',
       'https://i4.hurimg.com/i/hurriyet/75/0x0/5f723d507af50732b4b9d379.jpg',
       'https://wallpapercave.com/wp/wp4676576.jpg',
+      'https://image.freepik.com/free-vector/landscape-wallpaper-flat-design_74890-37.jpg',
+      'https://images.thdstatic.com/productImages/b3831648-d6d7-43e2-8585-a3920a449167/svn/a-street-prints-wallpaper-rolls-2744-24129-64_600.jpg',
+      'https://dynamicwallpaper.club/landing-vids/1.png',
     ]
 
     let pick = img[Math.floor(Math.random() * img.length)]
