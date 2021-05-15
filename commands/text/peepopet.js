@@ -15,8 +15,6 @@ module.exports = {
     const embed = new MessageEmbed()
     embed.setColor('#FF283F')
 
-    embed.setDescription(`**Guild information for __${message.guild.name}__**`)
-
     if (message.mentions.users.size > 0 && !args[1]) {
       let user = message.mentions.users.first()
       embed.setTitle(`${message.author.username} love ${user.username}!`)
@@ -33,7 +31,7 @@ module.exports = {
       embed.setTitle(`${message.author.username} love himself`)
     }
 
-    embed.addField(loveLevel)
+    embed.addField(`${loveLevel}x`)
     embed.setTimestamp()
     message.channel.send(embed)
   },
