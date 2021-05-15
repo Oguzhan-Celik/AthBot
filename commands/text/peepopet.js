@@ -15,15 +15,20 @@ module.exports = {
     const embed = new MessageEmbed()
     embed.setColor('#FF283F')
 
-    if (message.mentions.users.size > 0) {
+    if (message.mentions.users.size > 0 && !args[1]) {
       let user = message.mentions.users.first()
       embed.setTitle(`${message.author.username} love ${user.username}!`)
-    } else {
+    } else if (message.mentions.users.size > 0 && args[1]) {
+      let user = message.mentions.users.first()
+      embed.setTitle(`${user.username} love ${args[1]}`)
+    } else if (args[1]) {
       embed.setTitle(`${message.author.username} love ${args[1]}`)
+    } else {
+      embed.setTitle(`${message.author.username} love himself`)
     }
 
     embed.addField(loveLevel)
-
+    embed.setTimestamp()
     message.channel.send(embed)
   },
 }
