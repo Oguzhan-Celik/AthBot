@@ -20,7 +20,7 @@ module.exports = {
     const ctx = canvas.getContext('2d')
 
     const avatar = await Canvas.loadImage(
-      user.displayAvatarURL({ format: 'gif' })
+      user.displayAvatarURL({ format: 'jpg' })
     )
     ctx.drawImage(avatar, 5, 160, 150, 150)
     ctx.beginPath()
@@ -33,10 +33,13 @@ module.exports = {
     ctx.clip()
 
     ctx.restore()
-    const background2 = await Canvas.loadImage(
+
+    var myGif = GIF()
+    myGif.load(
       'https://cdn.betterttv.net/emote/5f21db8fcf6d2144653d8bd4/3x.gif'
     )
-    ctx.drawImage(background2, 0, 0, canvas.width, canvas.height)
+
+    ctx.drawImage(myGif.image, 0, 0)
 
     const final = new Discord.MessageAttachment(canvas.toBuffer(), 'pet.gif')
 
