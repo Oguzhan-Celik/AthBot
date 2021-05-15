@@ -24,6 +24,6 @@ module.exports = {
 
     embed.setTitle(loveLevel)
 
-    message.channel.send({ embed })
+    message.channel.send(embed)
   },
 }
