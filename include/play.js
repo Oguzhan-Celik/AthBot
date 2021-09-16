@@ -8,9 +8,12 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!song) {
-      setTimeout(() => queue.channel.leave(), 5000)
-      setTimeout(() => message.client.queue.delete(message.guild.id), 5000)
+      message.client.queue.delete(message.guild.id);
+      await sleep (10000)
+      if(!song){
+      queue.channel.leave();
       return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
+      }
     }
 
     let stream = null;
