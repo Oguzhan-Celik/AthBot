@@ -12,7 +12,7 @@ module.exports = {
         if (queue.connection.dispatcher && message.guild.me.voice.channel) return;
         queue.channel.leave();
         !PRUNING && queue.textChannel.send("play.leaveChannel");
-      }, 5000);
+      }, 300000);
       !PRUNING && queue.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
       return message.client.queue.delete(message.guild.id);
     }
