@@ -8,12 +8,13 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!song) {
-      message.client.queue.delete(message.guild.id);
-      await sleep (10000)
-      if(!song){
-      queue.channel.leave();
-      return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
-      }
+      setTimeout(function(){
+        if (queue.connection.dispatcher && message.guild.me.voice.channel) return;
+        queue.channel.leave();
+        !PRUNING && queue.textChannel.send("play.leaveChannel");
+      },STAY_TIME * 1000)
+      !PRUNING && queue.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
+      return message.client.queue.delete(message.guild.id);
     }
 
     let stream = null;
