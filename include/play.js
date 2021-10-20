@@ -1,6 +1,6 @@
 const ytdlDiscord = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader");
-const { canModifyQueue } = require("../util/AthbotUtil");
+const { canModifyQueue, STAY_TIME } = require("../util/AthbotUtil");
 
 module.exports = {
   async play(song, message) {
@@ -8,9 +8,13 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!song) {
-      queue.channel.leave();
-      message.client.queue.delete(message.guild.id);
-      return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
+      setTimeout(function(){
+        if (queue.connection.dispatcher && message.guild.me.voice.channel) return;
+        queue.channel.leave();
+        !PRUNING && queue.textChannel.send("play.leaveChannel");
+      }, 300000);
+      !PRUNING && queue.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
+      return message.client.queue.delete(message.guild.id);
     }
 
     let stream = null;
